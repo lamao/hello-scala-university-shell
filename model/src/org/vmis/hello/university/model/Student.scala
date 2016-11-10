@@ -3,7 +3,7 @@ package org.vmis.hello.university.model
 /**
   * Created by Vycheslav Mischeryakov on 01.11.16.
   */
-class Student(anId: Int, aName: String, anAge: Int, aPassport: String) extends Person(anId, aName, anAge, aPassport) {
+class Student(id: Int, name: String, age: Int, passport: String) extends Person(id, name, age, passport) {
 
   var group:Group = _
 
@@ -16,6 +16,6 @@ class Student(anId: Int, aName: String, anAge: Int, aPassport: String) extends P
       result += group.code
     }
 
-    return result
+    result
   }
 }

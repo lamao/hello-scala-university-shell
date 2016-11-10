@@ -9,6 +9,7 @@ import org.vmis.hello.university.commands.statuses.{Ok, Status}
 object NoCommand extends Handler {
   override def process(args: Array[String]): Status = {
     println("Such command was not found")
-    return Ok
+
+    Ok
   }
 }
