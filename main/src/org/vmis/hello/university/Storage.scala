@@ -34,6 +34,12 @@ object Storage {
     lastGroupId
   }
 
+  def findStudent(id: Int): Option[Student] = {
+    students.find({s: Student => s.id == id})
+  }
 
+  def findGroup(id: Int): Option[Group] = {
+    groups.find({g: Group => g.id == id})
+  }
 
 }

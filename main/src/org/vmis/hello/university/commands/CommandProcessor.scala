@@ -1,7 +1,7 @@
 package org.vmis.hello.university.commands
 
 import org.vmis.hello.university.commands.handlers.groups.{AddGroup, GenerateGroup, ListGroups}
-import org.vmis.hello.university.commands.handlers.students.{AddStudent, GenerateStudent, ListStudents}
+import org.vmis.hello.university.commands.handlers.students.{AddStudent, GenerateStudent, ListStudents, UpdateStudent}
 import org.vmis.hello.university.commands.handlers.system.{Exit, Help}
 import org.vmis.hello.university.commands.handlers.{Handler, SubHandler}
 import org.vmis.hello.university.commands.statuses.{BadCommand, Error, Ok, Status}
@@ -23,6 +23,7 @@ object CommandProcessor {
     "students" -> new SubHandler(Map(
       "list" -> ListStudents,
       "add" -> AddStudent,
+      "update" -> UpdateStudent,
       "generate" -> GenerateStudent
     )),
     "groups" -> new SubHandler(Map(
