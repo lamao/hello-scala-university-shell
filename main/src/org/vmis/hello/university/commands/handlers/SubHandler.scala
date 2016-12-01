@@ -7,18 +7,17 @@ import org.vmis.hello.university.commands.statuses.{BadCommand, Ok, Status}
   */
 class SubHandler(handlers: Map[String, Handler]) extends Handler {
 
-  override def process(args: Array[String]): Status = {
-    if (args.isEmpty) {
-      return BadCommand
-    }
+  private val RequiredNumberOfArgs = 1
 
+  override def process(args: Array[String]): Status = {
     val subCommand = args(0)
     if (handlers.contains(subCommand)) {
-      handlers.apply(subCommand).process(args.slice(1, args.length))
+      return handlers.apply(subCommand).generalProcess(args.slice(1, args.length))
     } else {
       return BadCommand
     }
-
-    Ok
   }
+
+  override def getRequiredNumberOfArgs: Int = RequiredNumberOfArgs
+
 }

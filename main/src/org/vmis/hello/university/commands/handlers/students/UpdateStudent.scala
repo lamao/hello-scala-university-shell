@@ -1,9 +1,9 @@
 package org.vmis.hello.university.commands.handlers.students
 
 import org.vmis.hello.university.Storage
+import org.vmis.hello.university.commands.Logger
 import org.vmis.hello.university.commands.handlers.Handler
 import org.vmis.hello.university.commands.statuses.{Error, Ok, Status}
-import org.vmis.hello.university.model.Student
 
 import scala.io.StdIn
 
@@ -11,6 +11,8 @@ import scala.io.StdIn
   * Created by Vycheslav Mischeryakov on 10.11.16.
   */
 object UpdateStudent extends Handler {
+  private val RequiredNumberOfArgs = 1
+
   override def process(args: Array[String]): Status = {
     val id = args(0).toInt
 
@@ -43,4 +45,6 @@ object UpdateStudent extends Handler {
 
     Ok
   }
+
+  override def getRequiredNumberOfArgs: Int = RequiredNumberOfArgs
 }

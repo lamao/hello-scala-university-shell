@@ -42,14 +42,14 @@ object CommandProcessor {
       print(PROMPT)
       val line = StdIn.readLine()
       if (line.startsWith(EXIT_COMMAND)) {
-        handlers.apply(EXIT_COMMAND).process()
+        handlers.apply(EXIT_COMMAND).generalProcess()
         return
       } else {
         val status = processLine(line)
         if (status.eq(BadCommand)) {
-          println(s"Command <$line> not found")
+          println(s"Command <$line> is not a proper command")
         } else if (!status.eq(Ok)) {
-          println(s"Some problems occurred during executing command. Returning status is $status")
+          println(s"Some problems occurred during executing command. Returning status is ${status.getClass.getTypeName}")
         }
       }
     }
@@ -69,7 +69,7 @@ object CommandProcessor {
       if (handler.eq(None)) {
         return BadCommand
       }
-      return handler.get.process(tokens.slice(1, tokens.length))
+      return handler.get.generalProcess(tokens.slice(1, tokens.length))
     }
   }
 
