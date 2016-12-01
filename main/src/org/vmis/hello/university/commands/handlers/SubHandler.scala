@@ -11,11 +11,13 @@ class SubHandler(handlers: Map[String, Handler]) extends Handler {
 
   override def process(args: Array[String]): Status = {
     val subCommand = args(0)
+
+    var result:Status = BadCommand
     if (handlers.contains(subCommand)) {
-      return handlers.apply(subCommand).generalProcess(args.slice(1, args.length))
-    } else {
-      return BadCommand
+      result = handlers.apply(subCommand).generalProcess(args.slice(1, args.length))
     }
+
+    result
   }
 
   override def getRequiredNumberOfArgs: Int = RequiredNumberOfArgs
