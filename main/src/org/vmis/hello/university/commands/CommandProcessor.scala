@@ -57,7 +57,7 @@ object CommandProcessor {
 
   /**
     * Process one line, inputted by user
-    * @param line
+    * @param line - string line from user input
     * @return
     */
   private def processLine(line: String): Status = {
